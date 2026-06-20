@@ -39,7 +39,7 @@
         <opacity>1</opacity>
         <interval>150</interval>
       </end>
-      <sequence repeatfrom="0" repeat="0">
+      <sequence repeatfrom="0" repeat="random/40+15">
         <frame>8</frame>
         <frame>9</frame>
         <frame>10</frame>
@@ -66,7 +66,7 @@
         <opacity>1</opacity>
         <interval>150</interval>
       </end>
-      <sequence repeatfrom="0" repeat="0">
+      <sequence repeatfrom="0" repeat="random/40+15">
         <frame>1</frame>
         <frame>2</frame>
         <frame>3</frame>
