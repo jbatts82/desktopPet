@@ -16,104 +16,66 @@
     <transparency>Magenta</transparency>
   </image>
   <spawns>
-    <spawn id="1" probability="20">
+    <spawn id="1" probability="100">
       <x>screenW+10</x>
       <y>areaH-imageH</y>
-      <next probability="0">2</next>
+      <next probability="100">1</next>
     </spawn>
   </spawns>
   <animations>
     <animation id="1">
-      <name>walk_right</name>
-      <start>
-        <x>-2</x>
-        <y>0</y>
-        <offsety>0</offsety>
-        <opacity>1</opacity>
-        <interval>200</interval>
-      </start>
-      <end>
-        <x>-2</x>
-        <y>0</y>
-        <offsety>0</offsety>
-        <opacity>1</opacity>
-        <interval>200</interval>
-      </end>
-      <sequence repeatfrom="0" repeat="20">
-        <frame>1</frame>
-        <frame>2</frame>
-        <frame>3</frame>
-        <next probability="50" only="none">1</next>
-        <action>none</action>
-      </sequence>
-      <border>
-        <next probability="50" only="none">2</next>
-      </border>
-    </animation>
-    <animation id="2">
       <name>walk_left</name>
       <start>
-        <x>0</x>
+        <x>-3</x>
         <y>0</y>
         <offsety>0</offsety>
         <opacity>1</opacity>
-        <interval>200</interval>
+        <interval>150</interval>
       </start>
       <end>
-        <x>0</x>
+        <x>-3</x>
         <y>0</y>
         <offsety>0</offsety>
         <opacity>1</opacity>
-        <interval>200</interval>
+        <interval>150</interval>
       </end>
       <sequence repeatfrom="0" repeat="0">
         <frame>8</frame>
         <frame>9</frame>
         <frame>10</frame>
+        <next probability="100" only="none">1</next>
         <action>none</action>
       </sequence>
+      <border>
+        <next probability="100" only="none">2</next>
+      </border>
     </animation>
-    <animation id="3">
-      <name>stand_right</name>
+    <animation id="2">
+      <name>walk_right</name>
       <start>
-        <x>0</x>
+        <x>3</x>
         <y>0</y>
         <offsety>0</offsety>
         <opacity>1</opacity>
-        <interval>100</interval>
+        <interval>150</interval>
       </start>
       <end>
-        <x>0</x>
+        <x>3</x>
         <y>0</y>
         <offsety>0</offsety>
         <opacity>1</opacity>
-        <interval>100</interval>
+        <interval>150</interval>
       </end>
       <sequence repeatfrom="0" repeat="0">
-        <frame>0</frame>
+        <frame>1</frame>
+        <frame>2</frame>
+        <frame>3</frame>
+        <next probability="100" only="none">2</next>
         <action>none</action>
       </sequence>
-    </animation>
-    <animation id="4">
-      <name>New</name>
-      <start>
-        <x>0</x>
-        <y>0</y>
-        <offsety>0</offsety>
-        <opacity>1</opacity>
-        <interval>100</interval>
-      </start>
-      <end>
-        <x>0</x>
-        <y>0</y>
-        <offsety>0</offsety>
-        <opacity>1</opacity>
-        <interval>100</interval>
-      </end>
-      <sequence repeatfrom="0" repeat="0">
-        <frame>7</frame>
-        <action>none</action>
-      </sequence>
+      <border>
+        <next probability="100" only="none">1</next>
+      </border>
     </animation>
     <animation id="5">
       <name>fall</name>
@@ -156,6 +118,49 @@
       <sequence repeatfrom="0" repeat="0">
         <frame>0</frame>
         <next probability="100" only="none">1</next>
+        <action>none</action>
+      </sequence>
+    </animation>
+    <animation id="7">
+      <name>drag</name>
+      <start>
+        <x>0</x>
+        <y>0</y>
+        <offsety>0</offsety>
+        <opacity>1</opacity>
+        <interval>100</interval>
+      </start>
+      <end>
+        <x>0</x>
+        <y>0</y>
+        <offsety>0</offsety>
+        <opacity>1</opacity>
+        <interval>100</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="0">
+        <frame>0</frame>
+        <next probability="100" only="none">1</next>
+        <action>none</action>
+      </sequence>
+    </animation>
+    <animation id="8">
+      <name>kill</name>
+      <start>
+        <x>0</x>
+        <y>4</y>
+        <offsety>0</offsety>
+        <opacity>1</opacity>
+        <interval>100</interval>
+      </start>
+      <end>
+        <x>0</x>
+        <y>4</y>
+        <offsety>0</offsety>
+        <opacity>0</opacity>
+        <interval>100</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="5">
+        <frame>0</frame>
         <action>none</action>
       </sequence>
     </animation>
