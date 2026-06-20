@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animations
+  xmlns:xsd="https://esheep.petrucci.ch/ https://raw.githubusercontent.com/Adrianotiger/desktopPet/master/Resources/animations.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="https://esheep.petrucci.ch/">
+  <header>
+    <author>jbatts82</author>
+    <title>Super Mario Bros Desktop Pet</title>
+    <petname>Mario</petname>
+    <version>1.0</version>
+    <info>8-bit Super Mario from NES Super Mario Bros walking across your desktop![br]Sprites from the original NES game.</info>
+    <application>1</application>
+    <icon><![CDATA[AAABAAEAMDAAAAAAIADJAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAwAAAAMAgGAAAAVwL5hwAAAZBJREFUeJzlmcttwzAMhimCa+TQQxcICmSEHD1ETlUmyASZoM6pQ/TYEQoEWaAHH7pGAffKAiFC6mGZ9ndLQEuU+JOy6ACF+Hh5HlOf7a7fIfVZmtJRzvaV/Tikj4PgHGq264VAcE6YMgI5dEKiqyT0uRse2py2T3f/P9+GhzaczcFWkcQFxCONFuc0aBbz834/2tLC3OcAlRpI2l2NbDTwyPBokCSb2lhzQ2LdEjopdk6T6GeFTf/2m15Gc8LN7a1VaxUSChojKblLVZicQ20dEbCe0Bp4PvRCglavQreL7X2Js/9iiz8OY+pi3EuINEZTntCRzaWJhupttBVRsZhlSSjOYNet0TBXoX/VoxB7Nqa1mvmXUJyxbCS4z8VuZDWkpYFKNar4qVz72UXlQJDaGBI5u1Wj/YjgHATnEL/1WOXUio3UF2qle2kuTT64l1CYc0td014PNZyWJqsxPoJzqNRAmk+l3KZUNBCcg7AkCXUsxOZ7wtU2sfXm1S/1Uo/gHPJypYyCn+4jgK0dyOUPc+mZDArhhzwAAAAASUVORK5CYII=]]></icon>
+  </header>
+  <image>
+    <tilesx>7</tilesx>
+    <tilesy>3</tilesy>
+    <png><![CDATA[iVBORw0KGgoAAAANSUhEUgAAAqAAAAJACAYAAABSeNRHAAAcTUlEQVR4nO3dsW1cPbs10NGF3YWTN1EBAwMuwZmaUCS4AlXgCgaO3IQzlWBAmAKcOHEXDuYG/n9AgahryuQmec5aoV99M9IzPJyN82EfXl0Ol8thIt/eXw9535vHH0PeF5iH/Wef86/l+yLj19c26+Hdre/3Gf3P6F8AAIB9EUABAIgSQAEAiBJAAQCIEkABAIh6s7dW4/Gu8B9uw78IPEMLuy37T1ufPr2t+vmP3/87rKD4vVDi+2Jo2/3z+eez/35//K/q9bXjx3IHFACAKAEUAIAoARQAgCgBFACAKAEUAIA1W/DLtE15Fe3stea2t6dALDPnwzbb7lu1t5b0qOvo2Oh1atvxjOUOKAAAUQIoAABRAigAAFECKAAAUQIoAABRV5fD5bLFFuooN49rtCZXaQ2v0kJdZZ4lq8x5lfmvvv+0Opu7pLaVXHr92c6an23/X+W6GPXUiNX3vdW5AwoAQJQACgBAlAAKAECUAAoAQJQACgDAmmfBP3yoa0H2bke2Ovt19ZbcbC3I1c/IXsX5S+XPN1ono1rA9p9M272ktN/WtuN77yetvi9K11dpv+19Xcy2z9fqvU5KTkPelf/PHVAAAKIEUAAAogRQAACiBFAAAKIEUAAA5m7Bf/r0tmt7vZVWbcfalujqrfnettrO1sLOsP+8zP6T+b6Y7cz31X38/t9U+zAZ7oACABAlgAIAECWAAgAQJYACABAlgAIAsOZZ8KPaiK3OfG+l1Jof1U7Vzm5LC3vbLWz7T9v5FNvNx75nzff+vpjt6Shb3edHnRFPhjugAABECaAAAEQJoAAARAmgAABECaAAAMzRgi+1fVfXu7U3inb2NtrZWth/2H/WWoeln/94eP7nz1+ef9/j3d/+hi//PrN9L7R6Osoq+3wrW/27+MMdUAAAogRQAACiBFAAAKIEUAAAogRQAAD2cRb8bGfFtnqd0+n3YYv21s7Wwt42+8/r5lNsu5fOfK88u/zhXPf7lPT+Xphtf2tl9X2+dt0yljugAABECaAAAEQJoAAARAmgAABECaAAAKzZgh/VFtxb6007exu0sNuy/7xO7Vnkp8K/f3t/XdV27613a77257f6dJRae3uqAC9zBxQAgCgBFACAKAEUAIAoARQAgCgBFACAqKvL4XIZ0c5evfVW2x5tZZU5z/YUglYtVPPPzHmrn8vq+0+p7V6ySgt+ts9llfU82z6/1acQfKu87lq5eey7z7gDCgBAlAAKAECUAAoAQJQACgBAlAAKAMCaLfjaNt9srb3VW3Jaky/r/fmuMv/VW9ijPq9Wn+Pqc2t15nur9V/bwv74vc371v69tftPq/U5av/p3Y4v/f6rfL+ParWXHO/G7FfugAIAECWAAgAQJYACABAlgAIAECWAAgCwjxZ8qY3Y++zg2vedrT231acTtDJby7h327HUXlxlPqvPv3a/Ku0/rc5c/vX1uuvnXtuCH7WfnL+0eZ1W30eewjG2ZT/qe3yVtnuJFjwAAJvi/4IHACBKAAUAIEoABQAgSgAFACDqTasX6n127Silv2uVdnztUwjO3/u26rbazu79tIfi51Vo+xZff/H1PGr/Kc2/9vMtf+7XVe34Utt9VDt+Nq2ur1WUrt9SC7t2n+89595Pv+F1T4c4N2rxl/Yxd0ABAIgSQAEAiBJAAQCIEkABAIgSQAEAmLsFv9W2++rt+N4t7KIvda+/1bZ17zmXXqdVO3sVo/afUfMv/b33hzGt7VKb9ebx0KStP0rv66L2+2K279lV9pnZvl9azeH+WHe9fz7/bPI6Ja2enuEOKAAAUQIoAABRAigAAFECKAAAUQIoAABztOBna+GtYrZ2/Gzt4L3NZxWzfS57239qr6PD8TBE6WzxosLZ08e7Me3d2ayyzqvXZ6PXWeWpHcWnVTRqr7fS6vqqfbpFqTXvDigAAFECKAAAUQIoAABRAigAAFECKAAAc58FX6u2JTfKKi28rbYmS+3aUlu29xm1W7XKOqdtm7X086dBgz4X2vH3d3O1hplzn9nq0znuK6/f0s/PdnZ8qTXvDigAAFECKAAAUQIoAABRAigAAFECKAAAUW9WaVWvrvdZ26s8baC2BXk8jDmjdhWleda2Fx/OjX6hjVrl+iq23Qe1hlu140s+Hvb1VIfZzhaf7az5rbof9Lm3ep3S/uMOKAAAUQIoAABRAigAAFECKAAAUQIoAADbOgu+ltbb2DlvtT26Va3O6m31OrVmewpHq/3neFf4D1/qrrvS65SeWtC77X7z+PxTI769r3v6RG+r72+9r+vadnOr66L2cyleR7eHIWrn8PnQ94z13p97b+6AAgAQJYACABAlgAIAECWAAgAQJYACALCPFnyp3VZ7FvAq79tKqeU6Wwu1lVJrb1Rre29PaSitq1IbejajPq/qM80Lv+f5+/M/f3qc62z30npo9ZSD3i3sklat+dK+/evr9a6eAlG6LmrX/7tDX73X7Wzt+FHcAQUAIEoABQAgSgAFACBKAAUAIEoABQAg6k3vVlSpxTaqdV77vrO1xnpb/Qzl2Wx1nq3a8d2vr+PaT71YXan9XdsybnW91La8t/rUi95/l+vrdT5XntXeav+sfd/a77VT4XXcAQUAIEoABQAgSgAFACBKAAUAIEoABQBgH2fBs5ZRZyiX3vfdaY2zyFdpx2utblupdV5qqde+Dm29u/3R5Ox41/W21+3nyvb6bNwBBQAgSgAFACBKAAUAIEoABQAgSgAFACDqTau2HS8rzXmrtnqG8mxz+3xoc4bvVu2tBTyq7dvqTOrebd/SUyZaXRc3j3X7vLZ7W1ttu4/S6roofS7ugAIAECWAAgAQJYACABAlgAIAECWAAgCw5lnwW22blv6u4136N9mnUmv15jH+q7zYcv32fo2nRrRqAde2fUs8hePlz6Xk4cO+2r61LftWrflW67z3U1POi+w/ra6L1dd/aT1/HnS2e+3+X7tflbgDCgBAlAAKAECUAAoAQJQACgBAlAAKAEDU1eVwudT8D1Zp+45S25rsfXbtKmd/z9bObqXV9dKqddjK6fT7sMKce5/93cqoz7f359j7+6L2aSSllvFs67lW6XtktnW++r5Xy/xf5g4oAABRAigAAFECKAAAUQIoAABRAigAAHOcBT9b27223Tzq9y+972zt7Nnai6u3Bbfa+pytHVzb9i39+yrt+FHzrP3cR+235y91P396XGM916pd57Wvw+usss88DPrecQcUAIAoARQAgCgBFACAKAEUAIAoARQAgDla8KO0aouXXme2dv/qRrX8VnmqQO06bNVmXaXt3qoFXEtruG07vrTOR51Rvsr+0FvtnLXmX+f+WLmej8//c+1THWod7wr/fqj7/T+f23wfuQMKAECUAAoAQJQACgBAlAAKAECUAAoAwL5b8Myp1Cq9eXz+5z1toO3TA3q3WVudCb760xhqf75V2/rhw5inAYx6aoG29Zx6r//Zvhdqn4ZR3XbfqPvCHErt+NKc3QEFACBKAAUAIEoABQAgSgAFACBKAAUAYI4WfO3Zvq2UWtWtbPVM7dnORO49597rZJRWcyutw1Fnr6/Sjh91vcy2b8y2Tkqf42xz42W111fvfb7Uyu/ddu995nvt+5bOiK9Vmtv5+/M/7w4oAABRAigAAFECKAAAUQIoAABRAigAAFHOgl+M1udaZmsTz7Z+erf1Z/t7V+EpCszwdIhRf9e3L9dN2uKls9FPj3PtS5/Ob5s8DaDUsi/N2R1QAACiBFAAAKIEUAAAogRQAACiBFAAAKLezNbSXZ327pxz3lsb2nzYUjt+b9dviTlklFrbpbZ4rdL1cuq8zmuv01KLv6S23e8OKAAAUQIoAABRAigAAFECKAAAUQIoAABRzoIfTKtx22o/X0+leHlutfMZ1TbdG2fHZ+ZJW/bbsfN0BxQAgCgBFACAKAEUAIAoARQAgCgBFACAqKvL4XLJviUAAHvmDigAAFECKAAAAigAANvlDigAAFECKAAAUQIoAABRAigAAFECKAAAUQIoAABRAigAAFECKAAAUW8Oi/j2/nrI+948/hjyvrMxf/PfM+vf/PfM+jf/HtwBBQAgSgAFACBKAAUAIEoABQAgSgAFAGAfLfhRrbqS413hP9weNsn8zf8p638s8zf/JPv/WOb/hzugAABECaAAAEQJoAAARAmgAABECaAAAGyrBb9M22ujzN/8n7L+xzJ/80+y/49l/i9zBxQAgCgBFACAKAEUAIAoARQAgCgBFACAqKvL4XLZUwtslJvHH0Pe1/zNfwbWv/nvmfVv/nt2U8g/7oACABAlgAIAECWAAgAQJYACABAlgAIAsK2z4B8+/GzyOvfH/6p+/vP5Z5PXKXl3O6bVXsv8zf8p6/917D/2n6fs/y/z/ev792+4AwoAQJQACgBAlAAKAECUAAoAQJQACgDAmi34T5/edm2PttKqnffr6/VUrUnzN/+/Yf2/bj6tmL/592D/f5nv3zn3H3dAAQCIEkABAIgSQAEAiBJAAQCIEkABANjWWfCj2lutzrxupdQaW+VMYfM3/39h/Y9l/ub/L+z/Y33eaP5xBxQAgCgBFACAKAEUAIAoARQAgCgBFACAuVvwpTNnV9fqjNTezN/8e7D+xzJ/8/8b9v+xzL8td0ABAIgSQAEAiBJAAQCIEkABAIgSQAEA2PdZ8K1a56VW6ajXOZ1+H1Zg/ub/lPX/OvYf+89T9v+x15H5zzl/d0ABAIgSQAEAiBJAAQCIEkABAIgSQAEAiLq6HC6XEWekjjpjvbbV1fv3fHf7o8nrbHX+rfRuQW51/ta/+e95/bdi/zH/p6z/P9wBBQAgSgAFACBKAAUAIEoABQAgSgAFAGDNFnyr1mRtO6xVq3GVtu9s85/NbHMusf7N/yn7T2YOve1t/5mN+a81f3dAAQCIEkABAIgSQAEAiBJAAQCIEkABANhWC77Utvv4va5t9/BhzBm+ta3A2Vp4reZfcrxr8jLTza0V69/8/4X952X2n8z+Y/6vY/4vcwcUAIAoARQAgCgBFACAKAEUAIAoARQAgKg3rV5o9bbv6q3t2vk3m/OXutc/nX4ftsj6N/8k+8//Y/951f5j/2/L/F/HHVAAAKIEUAAAogRQAACiBFAAAKIEUAAA1mzB15qt7b7Vdvaoz7HUviy1Bfc2f+vf/Pe8/lux/5j/nj0s/v3rDigAAFECKAAAUQIoAABRAigAAFECKAAA+2jBj7JKO6yk9Huu3s779v762X8/3q19RvZsVl//q1t9/lvdf1Zh/muZ7WknJaP2H3dAAQCIEkABAIgSQAEAiBJAAQCIEkABAIjabAt+9bbjVv/e2lbg8VD3d/36+nybfm+t+VXWw1btbf7r7z/P7xs3j2vsD+bPv6yTUW19d0ABAIgSQAEAiBJAAQCIEkABAIgSQAEAiLq6HC6Xnm9QOuO7pLaN1ar9V/u+o85oLp3ZOmoOvd0f+7Zre7fgrf+xzL8t+8/Y/cT855z/KB8Xzz/ugAIAECWAAgAQJYACABAlgAIAECWAAgCw77PgR51pO9sZqbXts9q27yo+n38OacePYv2b/1P2n7X8+nrdtZ29t/1/tvlv9Xvh46D84w4oAABRAigAAFECKAAAUQIoAABRAigAAPtuwbdyvHv+389f1mglj7LK0wB4mfU/lvm/zlb3n1Xa2eb/8ud1f/iv6mktrea/1f3HHVAAAKIEUAAAogRQAACiBFAAAKIEUAAA1mzBz3YWbW3bi7ZtuFat1dL7vjvN1R61/s3/KfvPNvYfzP9v3B/r2vG92+XnRfKPO6AAAEQJoAAARAmgAABECaAAAEQJoAAARG32LHjG6t3yA+i9/5y/P//vN491Z4jvzSrz7/15+R58mTugAABECaAAAEQJoAAARAmgAAAIoAAAbJcWPFMrnel88xj/VYCdKbWtS97d1v08Y+ffqgW/ytnrvedfy/8FDwBAlAAKAECUAAoAQJQACgBAlAAKAECUFvzgFhhtz9L99Olt1c+fTr99BAut/9rPd/WzmGebP2Ptbf331uqpBef3fc+U3yp3QAEAiBJAAQCIEkABAIgSQAEAiBJAAQCI0oJ/Zeuw1J7Wws6cBf/woa4Nypxt69rrZau03fc5f+t/7PwZO393QAEAiBJAAQCIEkABAIgSQAEAiBJAAQBYswVfalF9W+SM1FLbepX24urzX11p/Yw6i1mrdKy9zd/65ynr/w/7/8vcAQUAIEoABQAgSgAFACBKAAUAIEoABQBgW2fBa2ezJbVPP+jdDt5b23SU0ud4Ov0+7In1v0/W/x/Wf1vugAIAECWAAgAQJYACABAlgAIAECWAAgCwrRZ8q/bu6meaj2rLegrBWq3Skr21rXuv/9o2q/m3Zf1nWP9zsv7/cAcUAIAoARQAgCgBFACAKAEUAIAoARQAgH204EedeV3bft2qVc4Qv3k87Iq2tfnsmfVvPnt22tnTTtwBBQAgSgAFACBKAAUAIEoABQAgSgAFACBqmRb8qJaZM6OZYR3uzaj5+FzMeQbW/7bZZ/5wBxQAgCgBFACAKAEUAIAoARQAgCgBFACAqKvL4XLJvuU2lNrx2m375GkJ7Jn1z55Z/6/jDigAAFECKAAAUQIoAABRAigAAFECKAAAUVrwAABEuQMKAECUAAoAQJQACgBAlAAKAECUAAoAQNSb7NsBr/Ht/fWQwd08/hjyvrMxf/PfM+vf/HtwBxQAgCgBFACAKAEUAIAoARQAgCgBFACAqGVa8Fp4bMmo9VxyvCv8h9vDJpm/+T9l/Y9l/vucvzugAABECaAAAEQJoAAARAmgAABECaAAAOyjBa+Fyh4ss843yvzN/ynrfyzzN/+n3AEFACBKAAUAIEoABQAgSgAFACBKAAUAIOrqcrhcer7B6i3Ud7c/ev0q7MBs63+Um8cx15H5m/8MrH/z37Obwv7vDigAAFECKAAAUQIoAABRAigAAFECKAAA+zgLfpTzl8qfb9RiHtWCZKyHDz+bvM798b+qn/98/tnkdVZ/OoT5m/9T1v/r2H/sPz32f3dAAQCIEkABAIgSQAEAiBJAAQCIEkABANhWC14LlT349Olt1/ZoK63a8b++Xk/Vmjd/8/8b1v/r5tOK+Zv/U+6AAgAQJYACABAlgAIAECWAAgAQJYACALBmC14LdRtnZzOn2vZoqzOvWym15le5Lszf/P+F9T+W+c85f3dAAQCIEkABAIgSQAEAiBJAAQCIEkABANjWWfCtaKFmfHtfd8Z3KzePa7ShS097WF2rM5p7M3/z78H6H8v89zl/d0ABAIgSQAEAiBJAAQCIEkABAIgSQAEAmLsFr4W6llGt9pLjXeE/3IZ/kUm1ah2WWo2jXud0+n1Ygfmb/1PW/+vYf+w/f7P/uwMKAECUAAoAQJQACgBAlAAKAECUAAoAQNTV5XC59GzBjzpLulULr5XeLeBl2u4F727XOAt+b9dF79+z1edu/ub/N6z/P+w/9p+/4Sx4AAA2xf8FDwBAlAAKAECUAAoAQJQACgDA3C34vbVQW9lbC36Um8c12vSl66X2umi1nldpu7di/ub/lPX/ujnYf+w//7L/uwMKAECUAAoAQJQACgBAlAAKAECUAAoAwJot+FEt1NmMavvWPoWgpFULstXnOFt7utXn8vF73XwePox5ekPt5zjb52X+5v8vrP8/7D/2nx77vzugAABECaAAAEQJoAAARAmgAABECaAAAES9ma2Fev5e9/rHu0MTs7V3VznDuvb1a3/PX1+vl34KwSpt99WvF/M3/yTrfyzzH6vV/N0BBQAgSgAFACBKAAUAIEoABQAgSgAFAGDNFnxtC7VZ2/dL3eufTr/bvO9G1bbXW5353kqpNT9ba3K2tvvergvzN/+nrP+xzH+f83cHFACAKAEUAIAoARQAgCgBFACAKAEUAIBtnQU/qs1aat+X2vqztfBKv+fqWp0Rz+usfl2szvzNf8+sf/N/yh1QAACiBFAAAKIEUAAAogRQAACiBFAAALbVgp/tzOWSvbWAW7XOS632Ua+z1c+rVdsU898D69/89+zjIvu/O6AAAEQJoAAARAmgAABECaAAAEQJoAAARF1dDpfLFs8ur22Bldr6o1rVreY56oz1Vq321Vvw395fd31qRKu2Y+37zjbnEvM3/79h/b9uDvYf+8+/cAcUAIAoARQAgCgBFACAKAEUAIAoARQAgLlb8Ku33bfagqz9XEa141t5d/vjsMUW9mxmezpELfM3/39h/Y9l/tuevzugAABECaAAAEQJoAAARAmgAABECaAAAES9OSyiVdu99vVr2/GjlFppxRbw8TDEKu311R3vnv/385e5rrutMn/z3zPr3/z/hjugAABECaAAAEQJoAAARAmgAABECaAAAMzRgv/19fn29P3h+Vbs53Obtnir1q0W3v/R4v8ypvX/sdDKd+ZvW7Vt99XNdua7+Zt/kvU/lvm/jjugAABECaAAAEQJoAAARAmgAABECaAAAKx5Fvz9sa4d3/uM6b21UD99envY0991Ov2O/y4AQBvugAIAECWAAgAQJYACABAlgAIAECWAAgAQ9aZ05nsrvdvue7PVtnst7XgAWJc7oAAARAmgAABECaAAAEQJoAAARAmgAACseRb8Vs9ev3n8MeR9td3bzs3Z8a/z8OHns/9+8/jKF8T8F2L9m/+ePXTe/90BBQAgSgAFACBKAAUAIEoABQAgSgAFACDq6nK4XHq2s1c/C753C/7X1+uqn/98fr6VVjv/492YpxnUvm+phVdyf/yv6zxrrbL+S3Ou/f1HPTWi5Nv7uuurpHYd9jbbUx1Kc261rnob9fn2/hxbrf/a/bx2v51tPdcq5aLZ1vls14U7oAAARAmgAABECaAAAEQJoAAARAmgAABEvXHm+Jzt3dqWd22bu3fbvff71rbd96a2vbh6W7MVbfe2bd/Sv6/Sjl9F77Z7q/389DhX271V/qld57Wvs1XugAIAECWAAgAQJYACABAlgAIAECWAAgAQ9eawUau02lvZanuu+Hcd07/JnEa1iVe5vkq/Z6k13KrNWmvUWdijnoKiNfy6z6W0TkrrfNQZ5avsD73VzvlhZ615d0ABAIgSQAEAiBJAAQCIEkABAIgSQAEAiFqmBV9qh41qj7by7vb5tuCvr9dVP3/ufBZwbaux99nEreZ2GNQCbjX/m8e5zobe6tMDerdZa1vPW30aQ+3Pt2pbP3xYYx9o9dSCvbWtV/Gx8/qf7XvBHVAAAKIEUAAAogRQAACiBFAAAKIEUAAAttWCrz2jtmSVNmgrpdZ27xZbq1Zp7RnctUqvc1Nquw8y6kzk3meXl9r3q2s1t9J+Ners9VXa8aOul719v9Ta6lNo9uam8vrqvc+7AwoAQJQACgBAlAAKAECUAAoAQJQACgDA3C14rbexVm83r/77W/9rma11Ptv66d3Wn+3vXYWnKDDD0yF6cwcUAIAoARQAgCgBFACAKAEUAIAoARQAgDla8KPai1qTzMA6fFltS3pv8zQfttSO39v1W2IObbkDCgBAlAAKAECUAAoAQJQACgBAlAAKAEDU1eVwuWTfkpnPsO7d8tvq3zUbZ6CvNbdV1qcz4tfi82Jm7oACABAlgAIAECWAAgAQJYACABAlgAIAcEj6X8ML6boUUUBkAAAAAElFTkSuQmCC]]></png>
+    <transparency>Magenta</transparency>
+  </image>
+
+  <!--
+    Spawn: Mario appears from the right edge and walks left.
+    Animation IDs:
+      1  = walk_left       (x=-3, left-facing frames, main locomotion left)
+      2  = walk_right      (x=+3, right-facing frames, main locomotion right)
+      3  = idle_left       (stationary, facing left)
+      4  = idle_right      (stationary, facing right)
+      5  = turn_R_to_L     (spin turn, switches to walk_left)
+      6  = turn_L_to_R     (spin turn, switches to walk_right)
+      7  = fall            (gravity fall, both directions, use jump frame)
+      8  = jump_right      (Mario bounces up while moving right)
+      9  = jump_left       (Mario bounces up while moving left)
+     10  = spawn_in        (fade-in at start)
+  -->
+
+  <spawns>
+    <spawn id="1" probability="100">
+      <x>screenW</x>
+      <y>areaH-imageH</y>
+      <next probability="100">10</next>
+    </spawn>
+  </spawns>
+
+  <animations>
+
+    <!-- 10: Spawn fade-in, then start walking left -->
+    <animation id="10">
+      <name>spawn_in</name>
+      <start>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>0</opacity><interval>80</interval>
+      </start>
+      <end>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>80</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="10">
+        <frame>15</frame>
+        <next probability="100" only="none">1</next>
+        <action>none</action>
+      </sequence>
+    </animation>
+
+    <!-- 1: Walk LEFT (Mario moves left across the screen, uses left-facing sprites) -->
+    <animation id="1">
+      <name>walk_left</name>
+      <start>
+        <x>-3</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>130</interval>
+      </start>
+      <end>
+        <x>-3</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>130</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="random/40+15">
+        <frame>16</frame>
+        <frame>17</frame>
+        <frame>18</frame>
+        <frame>19</frame>
+        <frame>20</frame>
+        <next probability="85" only="none">1</next>
+        <next probability="10" only="none">3</next>
+        <next probability="5"  only="none">9</next>
+        <action>none</action>
+      </sequence>
+      <border>
+        <next probability="100" only="none">6</next>
+      </border>
+      <gravity>
+        <next probability="100" only="none">7</next>
+      </gravity>
+    </animation>
+
+    <!-- 2: Walk RIGHT (Mario moves right across the screen, uses right-facing sprites) -->
+    <animation id="2">
+      <name>walk_right</name>
+      <start>
+        <x>3</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>130</interval>
+      </start>
+      <end>
+        <x>3</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>130</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="random/40+15">
+        <frame>1</frame>
+        <frame>2</frame>
+        <frame>3</frame>
+        <frame>1</frame>
+        <next probability="85" only="none">2</next>
+        <next probability="10" only="none">4</next>
+        <next probability="5"  only="none">8</next>
+        <action>none</action>
+      </sequence>
+      <border>
+        <next probability="100" only="none">5</next>
+      </border>
+      <gravity>
+        <next probability="100" only="none">7</next>
+      </gravity>
+    </animation>
+
+    <!-- 3: Idle LEFT (Mario stands still, facing left) -->
+    <animation id="3">
+      <name>idle_left</name>
+      <start>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>500</interval>
+      </start>
+      <end>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>500</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="random/20+3">
+        <frame>15</frame>
+        <next probability="70" only="none">1</next>
+        <next probability="20" only="none">6</next>
+        <next probability="10" only="none">4</next>
+        <action>none</action>
+      </sequence>
+      <border>
+        <next probability="100" only="none">6</next>
+      </border>
+      <gravity>
+        <next probability="100" only="none">7</next>
+      </gravity>
+    </animation>
+
+    <!-- 4: Idle RIGHT (Mario stands still, facing right) -->
+    <animation id="4">
+      <name>idle_right</name>
+      <start>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>500</interval>
+      </start>
+      <end>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>500</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="random/20+3">
+        <frame>0</frame>
+        <next probability="70" only="none">2</next>
+        <next probability="20" only="none">5</next>
+        <next probability="10" only="none">3</next>
+        <action>none</action>
+      </sequence>
+      <border>
+        <next probability="100" only="none">5</next>
+      </border>
+      <gravity>
+        <next probability="100" only="none">7</next>
+      </gravity>
+    </animation>
+
+    <!-- 5: Turn RIGHT→LEFT (skid, spin, settle facing left) -->
+    <animation id="5">
+      <name>turn_R_to_L</name>
+      <start>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>110</interval>
+      </start>
+      <end>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>110</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="0">
+        <frame>6</frame>
+        <frame>4</frame>
+        <frame>7</frame>
+        <frame>9</frame>
+        <frame>10</frame>
+        <frame>15</frame>
+        <next probability="100" only="none">1</next>
+        <action>none</action>
+      </sequence>
+    </animation>
+
+    <!-- 6: Turn LEFT→RIGHT (spin, settle facing right) -->
+    <animation id="6">
+      <name>turn_L_to_R</name>
+      <start>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>110</interval>
+      </start>
+      <end>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>110</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="0">
+        <frame>15</frame>
+        <frame>10</frame>
+        <frame>9</frame>
+        <frame>7</frame>
+        <frame>4</frame>
+        <frame>6</frame>
+        <frame>0</frame>
+        <next probability="100" only="none">2</next>
+        <action>none</action>
+      </sequence>
+    </animation>
+
+    <!-- 7: Fall (gravity, accelerates downward, lands at bottom) -->
+    <animation id="7">
+      <name>fall</name>
+      <start>
+        <x>0</x><y>2</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>80</interval>
+      </start>
+      <end>
+        <x>0</x><y>10</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>40</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="20">
+        <frame>5</frame>
+        <next probability="100" only="none">7</next>
+        <action>none</action>
+      </sequence>
+      <border>
+        <next probability="100" only="none">3</next>
+      </border>
+    </animation>
+
+    <!-- 8: Jump RIGHT (Mario hops while walking right) -->
+    <animation id="8">
+      <name>jump_right</name>
+      <start>
+        <x>3</x><y>-7</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>80</interval>
+      </start>
+      <end>
+        <x>3</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>80</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="8">
+        <frame>5</frame>
+        <next probability="100" only="none">7</next>
+        <action>none</action>
+      </sequence>
+      <border>
+        <next probability="100" only="none">4</next>
+      </border>
+    </animation>
+
+    <!-- 9: Jump LEFT (Mario hops while walking left) -->
+    <animation id="9">
+      <name>jump_left</name>
+      <start>
+        <x>-3</x><y>-7</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>80</interval>
+      </start>
+      <end>
+        <x>-3</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>80</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="8">
+        <frame>5</frame>
+        <next probability="100" only="none">7</next>
+        <action>none</action>
+      </sequence>
+      <border>
+        <next probability="100" only="none">3</next>
+      </border>
+    </animation>
+
+    <!-- 11: drag — played while the user drags Mario around -->
+    <animation id="11">
+      <name>drag</name>
+      <start>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>80</interval>
+      </start>
+      <end>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>80</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="0">
+        <frame>5</frame>
+        <next probability="100" only="none">11</next>
+        <action>none</action>
+      </sequence>
+    </animation>
+
+    <!-- 12: kill — played when the pet is removed (fall off screen) -->
+    <animation id="12">
+      <name>kill</name>
+      <start>
+        <x>0</x><y>3</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>80</interval>
+      </start>
+      <end>
+        <x>0</x><y>12</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>40</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="30">
+        <frame>5</frame>
+        <next probability="100" only="none">12</next>
+        <action>none</action>
+      </sequence>
+    </animation>
+
+    <!-- 13: sync — played when syncing with another pet instance -->
+    <animation id="13">
+      <name>sync</name>
+      <start>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>200</interval>
+      </start>
+      <end>
+        <x>0</x><y>0</y><offsety>0</offsety>
+        <opacity>1</opacity><interval>200</interval>
+      </end>
+      <sequence repeatfrom="0" repeat="3">
+        <frame>0</frame>
+        <next probability="100" only="none">4</next>
+        <action>none</action>
+      </sequence>
+    </animation>
+
+  </animations>
+
+  <childs />
+
+</animations>

@@ -1,0 +1,14 @@
+# Pet Editor tool (third-party binaries)
+pet_editor/
+
+# Framework documentation (not our work)
+desktopPet-master/docs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+Thumbs.db
+.DS_Store
