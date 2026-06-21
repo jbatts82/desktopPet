@@ -15,10 +15,10 @@ from PIL import Image
 import os
 
 SRC = r"C:\Local_Workspace\sheep\Mario.png"
-OUT = r"C:\Local_Workspace\sheep\desktopPet-master\Pets\big_mario\spritesheet_mirrored.png"
+OUT = r"C:\Local_Workspace\sheep\desktopPet-master\Pets\big_mario\big_mario_ss.png"
 
-MAGENTA = (255, 0, 255, 255)
-WHITE   = (255, 255, 255, 255)
+TRANSPARENT = (0, 0, 0, 0)
+WHITE       = (255, 255, 255, 255)
 
 # Source crop coordinates for each of the 21 frames (x-start, x-end inclusive)
 cells_x = [
@@ -62,32 +62,32 @@ for cx0, cx1 in cells_x:
     y1 = ROW0_Y[1] + 1 - TRIM
 
     cell = img.crop((x0, y0, x1, y1))
-    # Replace white background with magenta
+    # Replace white background with transparent
     pixels = cell.load()
     for py in range(cell.height):
         for px_ in range(cell.width):
             if pixels[px_, py] == WHITE:
-                pixels[px_, py] = MAGENTA
+                pixels[px_, py] = TRANSPARENT
     # Scale with NEAREST to keep crisp pixel art
     scaled = cell.resize((spr_w, spr_h), Image.NEAREST)
 
-    # Place centered in a clean magenta tile
-    tile = Image.new("RGBA", (TW, TH), MAGENTA)
-    tile.paste(scaled, (pad_x, pad_y))
+    # Place centered in a transparent tile
+    tile = Image.new("RGBA", (TW, TH), TRANSPARENT)
+    tile.alpha_composite(scaled, (pad_x, pad_y))
     tiles.append(tile)
 
 # Build 14-col x 3-row sheet
 sheet_w = TW * COLS_ORIG * 2
 sheet_h = TH * ROWS
-sheet = Image.new("RGBA", (sheet_w, sheet_h), MAGENTA)
+sheet = Image.new("RGBA", (sheet_w, sheet_h), TRANSPARENT)
 
 for idx, tile in enumerate(tiles):
     col = idx % COLS_ORIG
     row = idx // COLS_ORIG
     # Original on left half
-    sheet.paste(tile, (col * TW, row * TH))
+    sheet.alpha_composite(tile, (col * TW, row * TH))
     # Mirror on right half
-    sheet.paste(tile.transpose(Image.FLIP_LEFT_RIGHT), ((COLS_ORIG + col) * TW, row * TH))
+    sheet.alpha_composite(tile.transpose(Image.FLIP_LEFT_RIGHT), ((COLS_ORIG + col) * TW, row * TH))
 
 sheet.save(OUT)
 
