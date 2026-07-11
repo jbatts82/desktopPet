@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animations xmlns:xsd="https://esheep.petrucci.ch/ https://raw.githubusercontent.com/Adrianotiger/desktopPet/master/Resources/animations.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://esheep.petrucci.ch/">
+<animations xmlns="https://esheep.petrucci.ch/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://esheep.petrucci.ch/ https://raw.githubusercontent.com/Adrianotiger/desktopPet/master/Resources/animations.xsd">
   <header>
     <author>KillerSlime</author>
     <title>MarioScreenPet</title>
@@ -61,6 +61,38 @@
         31    fall_fast (drag release)        21/22  jump_run_left / jump_run_right
                                               23..26 fall_* / fall_*_fast (walk speed)
                                               27..30 fall_run_* / fall_run_*_fast
+
+    ============================================================================
+    EDGE / WINDOW DETECTION - read this before touching any <border>
+    ============================================================================
+
+    only= is a BITMASK, and only="none" is 0x7F: a WILDCARD that matches EVERY
+    border event, not "no border". (Animations.cs: `if (anim.only != NONE &&
+    (anim.only & where) == 0) continue;`) A <next only="none"> inside <border>
+    therefore fires for screen edges, window edges, the taskbar and the ceiling
+    alike. Specific only= entries ADD weighted options alongside that baseline.
+
+    The runtime raises a TYPED event depending on what was hit (FormPet.cs):
+        screen left/right edge ....... vertical
+        WINDOW left/right edge ....... window
+        screen bottom / taskbar ...... taskbar
+        top of a window (falling) .... window
+        screen ceiling (moving up) ... horizontal
+
+    Walking off a ledge is expressed by ABSENCE, not by an animation: if a
+    <border> has no entry matching `window`, the lookup returns -1 and the
+    runtime clears hwndWindow ("not anymore on the window") WITHOUT zeroing x.
+    Mario keeps striding, is now unsupported, and <gravity> catches him on the
+    next tick. Hence the ground animations (1,2,9..16) match only="vertical"
+    only: they turn around at real screen walls, and walk off window ledges.
+    That is what their <gravity> edges are for - remove the vertical-only and
+    those edges go dead and Mario paces on top of a window forever.
+
+    Two consequences worth preserving:
+      - the fall_* <border>s keep only="none" ON PURPOSE: it is what catches
+        BOTH landing on the taskbar and landing on top of a window.
+      - an animation landed into must have start <y>0</y>, or FormPet.cs:603
+        clears hwndWindow and Mario immediately drops through the window.
   -->
   <spawns>
     <spawn id="1" probability="50">
@@ -92,7 +124,7 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">18</next>
+        <next probability="100" only="vertical">18</next>
       </border>
       <gravity>
         <next probability="100" only="none">23</next>
@@ -115,7 +147,7 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">17</next>
+        <next probability="100" only="vertical">17</next>
       </border>
       <gravity>
         <next probability="100" only="none">24</next>
@@ -219,7 +251,7 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">18</next>
+        <next probability="100" only="vertical">18</next>
       </border>
       <gravity>
         <next probability="100" only="none">23</next>
@@ -239,7 +271,7 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">17</next>
+        <next probability="100" only="vertical">17</next>
       </border>
       <gravity>
         <next probability="100" only="none">24</next>
@@ -263,7 +295,7 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">18</next>
+        <next probability="100" only="vertical">18</next>
       </border>
       <gravity>
         <next probability="100" only="none">27</next>
@@ -286,7 +318,7 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">17</next>
+        <next probability="100" only="vertical">17</next>
       </border>
       <gravity>
         <next probability="100" only="none">28</next>
@@ -306,7 +338,7 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">18</next>
+        <next probability="100" only="vertical">18</next>
       </border>
       <gravity>
         <next probability="100" only="none">27</next>
@@ -326,7 +358,7 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">17</next>
+        <next probability="100" only="vertical">17</next>
       </border>
       <gravity>
         <next probability="100" only="none">28</next>
@@ -345,10 +377,10 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">17</next>
+        <next probability="100" only="vertical">17</next>
       </border>
       <gravity>
-        <next probability="100" only="none">23</next>
+        <next probability="100" only="none">24</next>
       </gravity>
     </animation>
 
@@ -363,10 +395,10 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">18</next>
+        <next probability="100" only="vertical">18</next>
       </border>
       <gravity>
-        <next probability="100" only="none">24</next>
+        <next probability="100" only="none">23</next>
       </gravity>
     </animation>
 
