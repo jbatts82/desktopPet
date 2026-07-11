@@ -109,10 +109,42 @@
     those edges go dead and Mario paces on top of a window forever.
 
     Two consequences worth preserving:
-      - the fall_* <border>s keep only="none" ON PURPOSE: it is what catches
-        BOTH landing on the taskbar and landing on top of a window.
+      - a fall must list BOTH only="taskbar" and only="window" to be caught by
+        the ground and by the top of a window. Do NOT collapse them to one
+        only="none": that wildcard also matches the side walls (see below).
       - an animation landed into must have start <y>0</y>, or FormPet.cs:603
         clears hwndWindow and Mario immediately drops through the window.
+
+    ============================================================================
+    WHY A FALL MUST NOT USE only="none" - the mid-air wall freeze
+    ============================================================================
+
+    A fall carries horizontal speed (x=+-15/25), so it can hit a SIDE WALL while
+    airborne. With only="none" on its <border>, the wall (a `vertical` event)
+    matched the same wildcard as the ground, so the wall was treated as a
+    landing and threw Mario into walk_* - a GROUND animation - in mid-air. Then:
+
+      1. the border handler pins him (PositionX = wall) and zeroes x;
+      2. starting a new animation sets bNewAnimation, and FormPet.cs:570 SKIPS
+         the whole y/ground check for that tick;
+      3. walk_* has <gravity>, he is airborne, so gravity immediately sends him
+         back to fall_* with AnimationStep reset to 0;
+      4. fall_* used to start at <y>0</y>, so at step 0 his fall speed is 0.
+
+    Next tick he is still against the wall, so it repeats: the fall animation
+    restarts at step 0 forever, y never ramps 0 -> 40, he never descends, and
+    the ground border NEVER gets a chance to fire. Mario hangs in mid-air at the
+    wall. (Reproduced in 5 of 12 simulated runs, always pinned at screenW-imageW.)
+
+    The fix, and the two invariants that keep it fixed:
+      - a fall's <border> names the ground surfaces (taskbar, window) and sends
+        `vertical` to a STRAIGHT-DOWN fall (31 right / 32 left, x=0). With x=0
+        the wall border cannot re-fire, so the ground check runs and he lands.
+        Never point a wall border at an animation that still moves into the wall.
+      - every fall starts at <y>1</y>, not <y>0</y> (the stock esheep pet does
+        the same). y must be > 0 from step 0, because FormPet.cs:574 only ground-
+        checks when y > 0 - a fall whose first step has y=0 is a fall that cannot
+        land on its first tick.
   -->
   <spawns>
     <spawn id="1" probability="50">
@@ -210,7 +242,7 @@
          g = 0.4375 px/f^2 -> 8.75 px/tick^2, terminal 4.0 px/f -> 40 px/tick. -->
     <animation id="5">
       <name>fall</name>
-      <start><x>0</x><y>0</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <start><x>0</x><y>1</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
       <end><x>0</x><y>40</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
       <sequence repeatfrom="0" repeat="4">
         <frame>5</frame>
@@ -464,7 +496,8 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">23</next>
+        <next probability="100" only="horizontal">23</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
 
@@ -479,7 +512,8 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">24</next>
+        <next probability="100" only="horizontal">24</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
 
@@ -495,7 +529,8 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">27</next>
+        <next probability="100" only="horizontal">27</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
 
@@ -510,14 +545,15 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">28</next>
+        <next probability="100" only="horizontal">28</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
 
     <!-- 23: fall LEFT, walk speed - accelerate to terminal (5 ticks), then hold -->
     <animation id="23">
       <name>fall_left</name>
-      <start><x>-15</x><y>0</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <start><x>-15</x><y>1</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
       <end><x>-15</x><y>40</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
       <sequence repeatfrom="0" repeat="4">
         <frame>12</frame>
@@ -525,14 +561,16 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">1</next>
+        <next probability="100" only="taskbar">1</next>
+        <next probability="100" only="window">1</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
 
     <!-- 24: fall RIGHT, walk speed -->
     <animation id="24">
       <name>fall_right</name>
-      <start><x>15</x><y>0</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <start><x>15</x><y>1</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
       <end><x>15</x><y>40</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
       <sequence repeatfrom="0" repeat="4">
         <frame>5</frame>
@@ -540,7 +578,9 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">2</next>
+        <next probability="100" only="taskbar">2</next>
+        <next probability="100" only="window">2</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
 
@@ -555,7 +595,9 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">1</next>
+        <next probability="100" only="taskbar">1</next>
+        <next probability="100" only="window">1</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
 
@@ -570,14 +612,16 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">2</next>
+        <next probability="100" only="taskbar">2</next>
+        <next probability="100" only="window">2</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
 
     <!-- 27: fall LEFT carrying run speed - SMB1 keeps your run speed in the air -->
     <animation id="27">
       <name>fall_run_left</name>
-      <start><x>-25</x><y>0</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <start><x>-25</x><y>1</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
       <end><x>-25</x><y>40</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
       <sequence repeatfrom="0" repeat="4">
         <frame>12</frame>
@@ -585,14 +629,16 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">11</next>
+        <next probability="100" only="taskbar">11</next>
+        <next probability="100" only="window">11</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
 
     <!-- 28: fall RIGHT carrying run speed -->
     <animation id="28">
       <name>fall_run_right</name>
-      <start><x>25</x><y>0</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <start><x>25</x><y>1</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
       <end><x>25</x><y>40</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
       <sequence repeatfrom="0" repeat="4">
         <frame>5</frame>
@@ -600,7 +646,9 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">12</next>
+        <next probability="100" only="taskbar">12</next>
+        <next probability="100" only="window">12</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
 
@@ -615,7 +663,9 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">11</next>
+        <next probability="100" only="taskbar">11</next>
+        <next probability="100" only="window">11</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
 
@@ -630,11 +680,16 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">12</next>
+        <next probability="100" only="taskbar">12</next>
+        <next probability="100" only="window">12</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
 
-    <!-- 31: straight-down fall at terminal velocity (after a drag release) -->
+    <!-- 31: straight-down fall at terminal velocity, facing RIGHT. Used after a
+         drag release, and as the wall-slide target for every right-facing fall:
+         x=0 means he stops pushing into the wall, so the VERTICAL border stops
+         re-firing and the ground check can run again. -->
     <animation id="31">
       <name>fall_fast</name>
       <start><x>0</x><y>40</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
@@ -646,6 +701,21 @@
       </sequence>
       <border>
         <next probability="100" only="none">4</next>
+      </border>
+    </animation>
+
+    <!-- 32: straight-down fall, facing LEFT. Twin of 31 for left-facing falls. -->
+    <animation id="32">
+      <name>fall_fast_left</name>
+      <start><x>0</x><y>40</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <end><x>0</x><y>40</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
+      <sequence repeatfrom="0" repeat="40">
+        <frame>12</frame>
+        <next probability="100" only="none">32</next>
+        <action>none</action>
+      </sequence>
+      <border>
+        <next probability="100" only="none">3</next>
       </border>
     </animation>
 
