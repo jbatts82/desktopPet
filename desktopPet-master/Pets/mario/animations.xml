@@ -117,7 +117,7 @@
     </animation>
     <animation id="5">
       <name>fall</name>
-      <start><x>0</x><y>0</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <start><x>0</x><y>1</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
       <end><x>0</x><y>48</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
       <sequence repeatfrom="0" repeat="4">
         <frame>5</frame>
@@ -338,7 +338,8 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">23</next>
+        <next probability="100" only="horizontal">23</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
     <animation id="20">
@@ -351,7 +352,8 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">24</next>
+        <next probability="100" only="horizontal">24</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
     <animation id="21">
@@ -364,7 +366,8 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">27</next>
+        <next probability="100" only="horizontal">27</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
     <animation id="22">
@@ -377,12 +380,13 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">28</next>
+        <next probability="100" only="horizontal">28</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
     <animation id="23">
       <name>fall_left</name>
-      <start><x>-18</x><y>0</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <start><x>-18</x><y>1</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
       <end><x>-18</x><y>48</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
       <sequence repeatfrom="0" repeat="4">
         <frame>12</frame>
@@ -390,12 +394,14 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">1</next>
+        <next probability="100" only="taskbar">1</next>
+        <next probability="100" only="window">1</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
     <animation id="24">
       <name>fall_right</name>
-      <start><x>18</x><y>0</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <start><x>18</x><y>1</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
       <end><x>18</x><y>48</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
       <sequence repeatfrom="0" repeat="4">
         <frame>5</frame>
@@ -403,7 +409,9 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">2</next>
+        <next probability="100" only="taskbar">2</next>
+        <next probability="100" only="window">2</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
     <animation id="25">
@@ -416,7 +424,9 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">1</next>
+        <next probability="100" only="taskbar">1</next>
+        <next probability="100" only="window">1</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
     <animation id="26">
@@ -429,12 +439,14 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">2</next>
+        <next probability="100" only="taskbar">2</next>
+        <next probability="100" only="window">2</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
     <animation id="27">
       <name>fall_run_left</name>
-      <start><x>-30</x><y>0</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <start><x>-30</x><y>1</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
       <end><x>-30</x><y>48</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
       <sequence repeatfrom="0" repeat="4">
         <frame>12</frame>
@@ -442,12 +454,14 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">11</next>
+        <next probability="100" only="taskbar">11</next>
+        <next probability="100" only="window">11</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
     <animation id="28">
       <name>fall_run_right</name>
-      <start><x>30</x><y>0</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <start><x>30</x><y>1</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
       <end><x>30</x><y>48</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
       <sequence repeatfrom="0" repeat="4">
         <frame>5</frame>
@@ -455,7 +469,9 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">12</next>
+        <next probability="100" only="taskbar">12</next>
+        <next probability="100" only="window">12</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
     <animation id="29">
@@ -468,7 +484,9 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">11</next>
+        <next probability="100" only="taskbar">11</next>
+        <next probability="100" only="window">11</next>
+        <next probability="100" only="vertical">32</next>
       </border>
     </animation>
     <animation id="30">
@@ -481,7 +499,9 @@
         <action>none</action>
       </sequence>
       <border>
-        <next probability="100" only="none">12</next>
+        <next probability="100" only="taskbar">12</next>
+        <next probability="100" only="window">12</next>
+        <next probability="100" only="vertical">31</next>
       </border>
     </animation>
     <animation id="31">
@@ -495,6 +515,19 @@
       </sequence>
       <border>
         <next probability="100" only="none">4</next>
+      </border>
+    </animation>
+    <animation id="32">
+      <name>fall_fast_left</name>
+      <start><x>0</x><y>48</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></start>
+      <end><x>0</x><y>48</y><offsety>0</offsety><opacity>1</opacity><interval>33</interval></end>
+      <sequence repeatfrom="0" repeat="40">
+        <frame>12</frame>
+        <next probability="100" only="none">32</next>
+        <action>none</action>
+      </sequence>
+      <border>
+        <next probability="100" only="none">3</next>
       </border>
     </animation>
   </animations>

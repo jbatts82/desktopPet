@@ -135,7 +135,13 @@ icon_b64 = base64.b64encode(icon_buf.getvalue()).decode("ascii")
 
 def anim(id_, name, frames_, *, x0=0, y0=0, x1=None, y1=None,
          i0=I_WALK, i1=None, repeat="0", nexts=(), border=None, gravity=None):
-    """Emit one <animation>. x1/y1/i1 default to x0/y0/i0 (no interpolation)."""
+    """Emit one <animation>. x1/y1/i1 default to x0/y0/i0 (no interpolation).
+
+    `border` is either a single animation id - emitted as only="none", which is
+    NOT "no filter" but TOnly.NONE = 0x7f, the wildcard that matches EVERY
+    border event - or a list of (only, id) pairs when the different edges have
+    to be routed differently. See the fall/jump block below for why they must.
+    """
     x1 = x0 if x1 is None else x1
     y1 = y0 if y1 is None else y1
     i1 = i0 if i1 is None else i1
@@ -152,7 +158,10 @@ def anim(id_, name, frames_, *, x0=0, y0=0, x1=None, y1=None,
         <action>none</action>
       </sequence>'''
     if border is not None:
-        out += f'\n      <border>\n        <next probability="100" only="none">{border}</next>\n      </border>'
+        edges = [("none", border)] if isinstance(border, int) else border
+        rows = "\n".join(f'        <next probability="100" only="{only}">{t}</next>'
+                         for only, t in edges)
+        out += f'\n      <border>\n{rows}\n      </border>'
     if gravity is not None:
         out += f'\n      <gravity>\n        <next probability="100" only="none">{gravity}</next>\n      </gravity>'
     return out + "\n    </animation>"
@@ -175,7 +184,10 @@ animations = [
          nexts=[(65, 10), (35, 17)], gravity=5),
 
     # "fall" is bound by name - eSheep plays it when the user drops the pet.
-    anim(5, "fall", [JUMP_R], y0=0, y1=V_FALL, i0=I_RUN,
+    # x=0, so no wall event can fire and only="none" is safe here. y starts at 1,
+    # not 0: FormPet only runs the ground check when y > 0 (FormPet.cs:574), so a
+    # fall whose first tick has y=0 cannot land on that tick.
+    anim(5, "fall", [JUMP_R], y0=1, y1=V_FALL, i0=I_RUN,
          repeat=FALL_ACCEL_STEPS - 1, nexts=[(100, 31)], border=4),
     anim(6, "sync", [IDLE_R], i0=400, repeat="2", nexts=[(100, 4)]),
     anim(7, "drag", [JUMP_R], i0=I_WALK, repeat="0", nexts=[(100, 7)]),
@@ -216,34 +228,67 @@ animations = [
 
     # Jumps. Takeoff speed picks the arc: below 1.75 px/f you get vy 4.0 and a
     # 64-NES-px apex, at or above it vy 5.0 and 80. Both rise for 32 NES frames.
+    # A jump also carries x, so it can bonk a CEILING (horizontal) or clip a side
+    # WALL (vertical). Only the ceiling means "stop rising"; a wall must drop him
+    # into the matching straight-down fall (see the falls below).
     anim(19, "jump_left", [JUMP_L], x0=-X_AIR, y0=-VY_WALK, y1=0, i0=I_RUN,
-         repeat=JUMP_RISE_STEPS - 1, nexts=[(100, 23)], border=23),
+         repeat=JUMP_RISE_STEPS - 1, nexts=[(100, 23)],
+         border=[("horizontal", 23), ("vertical", 32)]),
     anim(20, "jump_right", [JUMP_R], x0=X_AIR, y0=-VY_WALK, y1=0, i0=I_RUN,
-         repeat=JUMP_RISE_STEPS - 1, nexts=[(100, 24)], border=24),
+         repeat=JUMP_RISE_STEPS - 1, nexts=[(100, 24)],
+         border=[("horizontal", 24), ("vertical", 31)]),
     anim(21, "jump_run_left", [JUMP_L], x0=-X_AIR_RUN, y0=-VY_RUN, y1=0, i0=I_RUN,
-         repeat=JUMP_RISE_STEPS - 1, nexts=[(100, 27)], border=27),
+         repeat=JUMP_RISE_STEPS - 1, nexts=[(100, 27)],
+         border=[("horizontal", 27), ("vertical", 32)]),
     anim(22, "jump_run_right", [JUMP_R], x0=X_AIR_RUN, y0=-VY_RUN, y1=0, i0=I_RUN,
-         repeat=JUMP_RISE_STEPS - 1, nexts=[(100, 28)], border=28),
+         repeat=JUMP_RISE_STEPS - 1, nexts=[(100, 28)],
+         border=[("horizontal", 28), ("vertical", 31)]),
 
     # Falls: accelerate to terminal (0.4375 px/f^2), then hold it.
-    anim(23, "fall_left", [JUMP_L], x0=-X_AIR, y0=0, y1=V_FALL, i0=I_RUN,
-         repeat=FALL_ACCEL_STEPS - 1, nexts=[(100, 25)], border=1),
-    anim(24, "fall_right", [JUMP_R], x0=X_AIR, y0=0, y1=V_FALL, i0=I_RUN,
-         repeat=FALL_ACCEL_STEPS - 1, nexts=[(100, 26)], border=2),
+    #
+    # A fall carries horizontal speed, so it can hit a side WALL while airborne.
+    # Its <border> must therefore NEVER use only="none" (the match-everything
+    # wildcard): a wall would then be handled like the ground and drop Mario into
+    # a walk_* while he is still in the air, walk_* has <gravity> and immediately
+    # bounces him back here with the step counter reset to 0 - a permanent mid-air
+    # hang against the wall. Instead each fall names the real landing surfaces
+    # (taskbar = screen bottom, window = a window's top/edges) and sends a wall
+    # event to the straight-down fall of the SAME facing (31 right / 32 left).
+    # Those have x=0, so the wall cannot re-fire and he slides down it and lands.
+    #
+    # y starts at 1 rather than 0 because FormPet.cs:574 only tests for ground
+    # when y > 0; the *_fast falls already start at terminal velocity.
+    anim(23, "fall_left", [JUMP_L], x0=-X_AIR, y0=1, y1=V_FALL, i0=I_RUN,
+         repeat=FALL_ACCEL_STEPS - 1, nexts=[(100, 25)],
+         border=[("taskbar", 1), ("window", 1), ("vertical", 32)]),
+    anim(24, "fall_right", [JUMP_R], x0=X_AIR, y0=1, y1=V_FALL, i0=I_RUN,
+         repeat=FALL_ACCEL_STEPS - 1, nexts=[(100, 26)],
+         border=[("taskbar", 2), ("window", 2), ("vertical", 31)]),
     anim(25, "fall_left_fast", [JUMP_L], x0=-X_AIR, y0=V_FALL, i0=I_RUN,
-         repeat="40", nexts=[(100, 25)], border=1),
+         repeat="40", nexts=[(100, 25)],
+         border=[("taskbar", 1), ("window", 1), ("vertical", 32)]),
     anim(26, "fall_right_fast", [JUMP_R], x0=X_AIR, y0=V_FALL, i0=I_RUN,
-         repeat="40", nexts=[(100, 26)], border=2),
-    anim(27, "fall_run_left", [JUMP_L], x0=-X_AIR_RUN, y0=0, y1=V_FALL, i0=I_RUN,
-         repeat=FALL_ACCEL_STEPS - 1, nexts=[(100, 29)], border=11),
-    anim(28, "fall_run_right", [JUMP_R], x0=X_AIR_RUN, y0=0, y1=V_FALL, i0=I_RUN,
-         repeat=FALL_ACCEL_STEPS - 1, nexts=[(100, 30)], border=12),
+         repeat="40", nexts=[(100, 26)],
+         border=[("taskbar", 2), ("window", 2), ("vertical", 31)]),
+    anim(27, "fall_run_left", [JUMP_L], x0=-X_AIR_RUN, y0=1, y1=V_FALL, i0=I_RUN,
+         repeat=FALL_ACCEL_STEPS - 1, nexts=[(100, 29)],
+         border=[("taskbar", 11), ("window", 11), ("vertical", 32)]),
+    anim(28, "fall_run_right", [JUMP_R], x0=X_AIR_RUN, y0=1, y1=V_FALL, i0=I_RUN,
+         repeat=FALL_ACCEL_STEPS - 1, nexts=[(100, 30)],
+         border=[("taskbar", 12), ("window", 12), ("vertical", 31)]),
     anim(29, "fall_run_left_fast", [JUMP_L], x0=-X_AIR_RUN, y0=V_FALL, i0=I_RUN,
-         repeat="40", nexts=[(100, 29)], border=11),
+         repeat="40", nexts=[(100, 29)],
+         border=[("taskbar", 11), ("window", 11), ("vertical", 32)]),
     anim(30, "fall_run_right_fast", [JUMP_R], x0=X_AIR_RUN, y0=V_FALL, i0=I_RUN,
-         repeat="40", nexts=[(100, 30)], border=12),
+         repeat="40", nexts=[(100, 30)],
+         border=[("taskbar", 12), ("window", 12), ("vertical", 31)]),
+
+    # The straight-down falls, one per facing. x=0 means no wall event can ever
+    # fire, so only="none" is safe: whatever they touch, they land on it.
     anim(31, "fall_fast", [JUMP_R], y0=V_FALL, i0=I_RUN,
          repeat="40", nexts=[(100, 31)], border=4),
+    anim(32, "fall_fast_left", [JUMP_L], y0=V_FALL, i0=I_RUN,
+         repeat="40", nexts=[(100, 32)], border=3),
 ]
 
 xml = f'''<?xml version="1.0" encoding="utf-8"?>
